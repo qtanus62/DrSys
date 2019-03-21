@@ -28,3 +28,5 @@ in Visual Studio,
 go to Package Manager Console,
 run: add-migration Initial_Migration
 then run: update-database
+
+Download a zip or clone of this project from GitHub to a local location, open the project in Visual Studio 2017, hit F5 to build and run the app. 
