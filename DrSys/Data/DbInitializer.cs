@@ -19,7 +19,7 @@ namespace DrSys.Data
 
             var doctor = new Doctor[]
             {
-                new Doctor { Id = 0,   Name = "John Doe", Gender = "M", MedicalSchoolId = 0, LanguageId = 0 }
+                new Doctor { Id = 1,   Name = "John Doe", Gender = "M", MedicalSchoolId = 1, LanguageId = 1 }
             };
 
             foreach (Doctor d in doctor)
@@ -29,7 +29,7 @@ namespace DrSys.Data
 
             var drSpec = new DoctorSpecialty[]
             {
-                new DoctorSpecialty { DoctorId = 0,   SpecialtyId = 0 }
+                new DoctorSpecialty { DoctorId = 1,   SpecialtyId = 1 }
             };
 
             foreach (DoctorSpecialty ds in drSpec)
@@ -39,7 +39,7 @@ namespace DrSys.Data
 
             var lang = new Language[]
             {
-                new Language { Id = 0,   LangName = "English" }
+                new Language { Id = 1,   LangName = "English" }
             };
 
             foreach (Language l in lang)
@@ -49,7 +49,7 @@ namespace DrSys.Data
 
             var medSch = new MedicalSchool[]
             {
-                new MedicalSchool { Id = 0,   MedSchName = "UGA" }
+                new MedicalSchool { Id = 1,   MedSchName = "UGA" }
             };
 
             foreach (MedicalSchool ms in medSch)
@@ -59,7 +59,7 @@ namespace DrSys.Data
 
             var patRat = new PatientRating[]
             {
-                new PatientRating { DoctorId = 0,   Comments = "Excellent!", Rating = 5 }
+                new PatientRating { DoctorId = 1,   Comments = "Excellent!", Rating = 5 }
             };
 
             foreach (PatientRating pr in patRat)
@@ -69,7 +69,7 @@ namespace DrSys.Data
 
             var spec = new Specialty[]
             {
-                new Specialty { Id = 0,   SpecName = "Family Medicine" }
+                new Specialty { Id = 1,   SpecName = "Family Medicine" }
             };
 
             foreach (Specialty s in spec)

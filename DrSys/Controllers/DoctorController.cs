@@ -22,9 +22,27 @@ namespace DrSys.Controllers
         }
 
         // GET: api/Doctor
+        // get doctor summary
         [HttpGet]
         public IEnumerable<Doctor> GetDoctors()
         {
+            /*            var drs = from d in _context.Doctors
+                                  select new Doctor()
+                                  {
+                                      Id = d.Id,
+                                      Name = d.Name,
+                                      Gender = d.Gender
+                                  };
+                                  */
+            /*SQL used to get Doctor summary data:
+             * select dr.Name, dr.Gender, spec.SpecName, avg(patRating.Rating)
+                from Doctors dr
+                left join DoctorSpecialties drSpec on drSpec.DoctorId = dr.Id
+                left join Specialties spec on spec.Id = drSpec.SpecialtyId
+                left join PatientRatings patRating on patRating.DoctorId = dr.Id
+                group by dr.Name, dr.Gender, spec.SpecNAme
+            */
+
             return _context.Doctors;
         }
 

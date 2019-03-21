@@ -12,6 +12,7 @@ export class SummaryComponent {
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
     http.get<drSummary[]>(baseUrl + 'api/Doctor').subscribe(result => {
       this.summary = result;
+      console.log(result);
     }, error => console.error(error));
   }
 }

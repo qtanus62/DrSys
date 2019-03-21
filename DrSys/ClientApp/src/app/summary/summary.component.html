@@ -13,7 +13,9 @@
   </thead>
   <tbody>
     <tr *ngFor="let doctor of summary">
-      <td  [routerLink]="['/app-detail', doctor.Id]">{{ doctor.name }}</td>
+      <td>
+        <a [routerLink]="['/app-detail', doctor.Id]">{{ doctor.name }}</a>
+      </td>
       <td>{{ doctor.gender }}</td>
       <td>{{ doctor.specialties }}</td>
       <td>{{ doctor.averageRating }}</td>
