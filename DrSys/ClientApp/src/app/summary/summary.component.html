@@ -1,0 +1,22 @@
+<h1>
+  Doctor Information Summary
+</h1>
+
+<table class='table'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Gender</th>
+      <th>Specialties</th>
+      <th>Average Patient Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let doctor of summary">
+      <td>{{ doctor.name }}</td>
+      <td>{{ doctor.gender }}</td>
+      <td>{{ doctor.specialties }}</td>
+      <td>{{ doctor.averageRating }}</td>
+    </tr>
+  </tbody>
+</table>
