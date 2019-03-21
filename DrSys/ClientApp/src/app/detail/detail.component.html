@@ -1,0 +1,21 @@
+<h1>
+  Doctor's Detail
+</h1>
+<table class='table'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Language</th>
+      <th>Medical School</th>
+      <th>Patient Review</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let doctor of summary">
+      <td>{{ doctor.name }}</td>
+      <td>{{ doctor.lang }}</td>
+      <td>{{ doctor.medSch }}</td>
+      <td>{{ doctor.comments }}</td>
+    </tr>
+  </tbody>
+</table>
