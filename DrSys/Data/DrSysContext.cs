@@ -1,9 +1,5 @@
 ﻿using DrSys.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace DrSys.Data
 {
@@ -20,17 +16,6 @@ namespace DrSys.Data
         public DbSet<PatientRating> PatientRatings { get; set; }
         public DbSet<Specialty> Specialties { get; set; }
 
-        public IEnumerable<Doctor> GetAllDoctors()
-        {
-            try
-            {
-                //return .ToList();
-                return null;
-            }
-            catch
-            {
-                throw;
-            }
-        }
+        //public DbSet<DrSummary> DoctorSummary { get; set; }
     }
 }

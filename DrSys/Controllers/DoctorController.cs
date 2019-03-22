@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DrSys.Data;
@@ -25,15 +23,28 @@ namespace DrSys.Controllers
         // get doctor summary
         [HttpGet]
         public IEnumerable<Doctor> GetDoctors()
+        //public IEnumerable<DrSummary> GetDoctors()
         {
-            /*            var drs = from d in _context.Doctors
-                                  select new Doctor()
-                                  {
-                                      Id = d.Id,
-                                      Name = d.Name,
-                                      Gender = d.Gender
-                                  };
-                                  */
+            var drs = from d in _context.Doctors
+                      join drSpec in _context.DoctorSpecialties
+                        on d.Id equals drSpec.DoctorId
+                      join spec in _context.Specialties
+                        on drSpec.SpecialtyId equals spec.Id
+                      join patRating in _context.PatientRatings
+                        on d.Id equals patRating.DoctorId
+                      //group d by d.Name into dgroup
+                      select new
+                      {
+                          d.Name,
+                          d.Gender,
+                          SpecialtyName = spec.SpecName,
+                          AverageRating = patRating.Rating
+                          
+                          //patRating.Rating
+                      };
+
+
+            //drs.ToList(); 
             /*SQL used to get Doctor summary data:
              * select dr.Name, dr.Gender, spec.SpecName, avg(patRating.Rating)
                 from Doctors dr
@@ -42,6 +53,7 @@ namespace DrSys.Controllers
                 left join PatientRatings patRating on patRating.DoctorId = dr.Id
                 group by dr.Name, dr.Gender, spec.SpecNAme
             */
+            //return drs;
 
             return _context.Doctors;
         }
