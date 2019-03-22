@@ -8,7 +8,7 @@ namespace DrSys.Models
 {
     public class RetrieveData
     {
-        private readonly DrSysContext db;
+        //private readonly DrSysContext db;
 
         //public List<DrSummary> GetDrSummary()
         //{

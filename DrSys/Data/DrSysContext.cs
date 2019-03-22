@@ -16,6 +16,5 @@ namespace DrSys.Data
         public DbSet<PatientRating> PatientRatings { get; set; }
         public DbSet<Specialty> Specialties { get; set; }
 
-        //public DbSet<DrSummary> DoctorSummary { get; set; }
     }
 }

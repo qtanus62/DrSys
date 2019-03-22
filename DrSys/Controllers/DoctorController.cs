@@ -19,32 +19,37 @@ namespace DrSys.Controllers
             _context = context;
         }
 
+        public class DrSummary
+        {
+            public string Name { get; set; }
+            public string Gender { get; set; }
+            public string SpecName { get; set; }
+            public int AverageRating { get; set; }
+
+        }
+
         // GET: api/Doctor
         // get doctor summary
         [HttpGet]
-        public IEnumerable<Doctor> GetDoctors()
-        //public IEnumerable<DrSummary> GetDoctors()
+        public IEnumerable<DrSummary> GetDoctors()
         {
             var drs = from d in _context.Doctors
-                      join drSpec in _context.DoctorSpecialties
-                        on d.Id equals drSpec.DoctorId
-                      join spec in _context.Specialties
-                        on drSpec.SpecialtyId equals spec.Id
-                      join patRating in _context.PatientRatings
-                        on d.Id equals patRating.DoctorId
-                      //group d by d.Name into dgroup
-                      select new
-                      {
-                          d.Name,
-                          d.Gender,
-                          SpecialtyName = spec.SpecName,
-                          AverageRating = patRating.Rating
-                          
-                          //patRating.Rating
-                      };
+                   join drSpec in _context.DoctorSpecialties
+                     on d.Id equals drSpec.DoctorId
+                   join spec in _context.Specialties
+                     on drSpec.SpecialtyId equals spec.Id
+                   join patRating in _context.PatientRatings
+                     on d.Id equals patRating.DoctorId
+                   //group d by d.Name into dgroup
+                   select new DrSummary
+                   {
+                       Name = d.Name,
+                       Gender = d.Gender,
+                       SpecName = spec.SpecName,
+                       AverageRating = patRating.Rating
 
+                   };
 
-            //drs.ToList(); 
             /*SQL used to get Doctor summary data:
              * select dr.Name, dr.Gender, spec.SpecName, avg(patRating.Rating)
                 from Doctors dr
@@ -53,9 +58,8 @@ namespace DrSys.Controllers
                 left join PatientRatings patRating on patRating.DoctorId = dr.Id
                 group by dr.Name, dr.Gender, spec.SpecNAme
             */
-            //return drs;
-
-            return _context.Doctors;
+            
+            return drs;
         }
 
         // GET: api/Doctor/5

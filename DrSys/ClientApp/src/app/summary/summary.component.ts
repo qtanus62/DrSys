@@ -20,6 +20,6 @@ export class SummaryComponent {
 interface drSummary {
   name: string;
   gender: string;
-  specialties: string;
+  specName: string;
   averageRating: string;
 }

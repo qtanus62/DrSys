@@ -1,0 +1,33 @@
+To better assess your knowledge, we’d like you to implement a simple web application. The complete
+application should include both front-end and back-end pieces. The front-end should be implemented
+using Angular 4 or later and back-end should utilize Asp.Net Core, Web API, and Entity Framework.
+SQLite should be used as your database.
+High Level Overview
+A medical clinic wants to show the list of doctors working there with some basic information and ability
+to look at the details of the doctor. There are also some rules that will make some doctors more
+prominent.
+Requirements
+Main page should display all the doctors in a grid format. The information shown in the grid should
+contain the following information: Name, Gender, Specialties (separated by comma), and Average
+Patient Rating. Name should be a hyperlink and clicking it should take you to the page showing details
+for that doctor. On the details page you should see additional information for that doctor such as
+Languages Spoken, Medical School Attended, and a list of Patient Reviews. Also, if the doctor has more
+than 85% of 5 star you need to display word “Superstar” after person’s name.
+Angular UI can be in the same project as Web API.
+For this assignment, please use SQLite database for your data store. The database should include
+sample data required to run the code.
+Database Schema:
+Doctor (Id, Name, Gender, MedicalSchoolId, LanguageId)
+Specialty (Id, Name)
+DoctorSpecialty (DoctorId, SpecialtyId)
+Language (Id, Name)
+MedicalSchool (Id, Name)
+PatientRating (DoctorId, Comments, Rating)
+Submission Instructions
+Your submission should be Visual Studio Project that we can compile and run. Since our email will block
+large attachment, we recommend you zip your files and share them through Google Drive, Dropbox
+Shared link, or similar way.
+In your package, include a README.md outlining:
+1. Precise instructions to launch and use your submission including runtimes and versions.
+2. Any assumptions you made.
+3. Additional thoughts about the project.
