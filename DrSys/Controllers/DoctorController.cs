@@ -33,6 +33,14 @@ namespace DrSys.Controllers
         [HttpGet]
         public IEnumerable<DrSummary> GetDoctors()
         {
+            /*SQL used to get Doctor summary data:
+             * select dr.Name, dr.Gender, spec.SpecName, avg(patRating.Rating)
+                from Doctors dr
+                left join DoctorSpecialties drSpec on drSpec.DoctorId = dr.Id
+                left join Specialties spec on spec.Id = drSpec.SpecialtyId
+                left join PatientRatings patRating on patRating.DoctorId = dr.Id
+                group by dr.Name, dr.Gender, spec.SpecNAme
+            */
             var drs = from d in _context.Doctors
                    join drSpec in _context.DoctorSpecialties
                      on d.Id equals drSpec.DoctorId
@@ -50,15 +58,21 @@ namespace DrSys.Controllers
 
                    };
 
-            /*SQL used to get Doctor summary data:
-             * select dr.Name, dr.Gender, spec.SpecName, avg(patRating.Rating)
-                from Doctors dr
-                left join DoctorSpecialties drSpec on drSpec.DoctorId = dr.Id
-                left join Specialties spec on spec.Id = drSpec.SpecialtyId
-                left join PatientRatings patRating on patRating.DoctorId = dr.Id
-                group by dr.Name, dr.Gender, spec.SpecNAme
-            */
-            
+            //LAMBDA
+            var drs2 = _context.Doctors
+                .Join(_context.DoctorSpecialties, dr => dr.Id, drSpec => drSpec.DoctorId, (dr, drSpec) => new { Doctors = dr, DoctorSpecialty = drSpec })
+                .Join(_context.Specialties, x => x.DoctorSpecialty.SpecialtyId, sp => sp.Id, (x, sp) => new { x, sp })
+                //.Join(_context.PatientRatings, y => y.Doctor.Id, pr => pr.DoctorId, (y, pr) => new { y, PatientRating = pr })
+                //.Where( r)
+                //.GroupBy(x => new { x.dr.Name, x.dr.Gender })
+                .Select(g => new DrSummary
+                {
+                    //g.Key.Name,
+                    //g.Key.Gender,
+                });
+
+
+
             return drs;
         }
 
